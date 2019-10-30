@@ -1,0 +1,99 @@
+/* The alert message box */
+.loginalert {
+  padding: 20px;
+  background-color: #98FB98;
+  margin-bottom: 15px;
+  width: 97.8%;
+  color: #014421;
+}
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: #014421;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}
+body {
+	background: rgb(255,255,255);
+	color: black;
+	font-family: Helvetica Neue, Helvetica, Arial;
+	}
+
+
+.alignleft {
+	float: left;
+	font-size: 25px;
+	font-weight: bold;
+	
+}
+.alignright {
+	float: right;
+	font-weight: bold;
+	}
+.alignphone{
+	font-weight: bold;
+	color: gray
+	
+}
+.header2{
+	display: inline-block;
+	border-top-style: solid;
+	border-width: 5px;
+	width: 99.8%;
+	border-color:rgb(153,26,0);
+	line-height: 4;
+	font-size: 19px;
+	font-weight: bold;
+		
+}
+.menu-align{ 
+    text-align: center;
+}
+
+a{
+	line-height: 1.2;
+	
+}
+a:link {
+  color: green;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  color: pink;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+  color: rgb(153,26,0);
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+button {
+  background-color: rgb(153,26,0);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 6%;
+  float:right;
+  margin-top:50px;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+  background-color: #000000	;
+}

@@ -1,0 +1,90 @@
+html{ height:100%; }
+body{ min-height:100%; padding:0; margin:0; position:relative; }
+
+body::after{ content:''; display:block; height:100px; }
+
+footer{ 
+  position:absolute; 
+  bottom:0; 
+  width:100%; 
+  height:100px; 
+}
+#incidentForm{
+	padding-top: 30px;
+	padding-right: 80px;
+	padding-bottom: 80px;
+	padding-left: 80px;
+	width:1000px;
+	margin: 0 auto;
+}
+#incidentTitle{
+	padding-bottom: 20px;
+	font-weight: bold;
+}
+
+#textForm{
+	font-size: 14pt;
+	font-weight: bold;
+	
+}
+
+#subtextForm{
+	font-size: 9pt;
+	font-weight: normal;
+	color:#696969;
+
+}
+
+#resourceInfo{
+	align:left;
+	font-size: 13pt;
+	font-weight: normal;
+}
+
+#incidentTable{
+	width:840px;
+}
+
+#column1{
+	width:200px;
+	vertical-align:middle;
+}
+
+#column2{
+	width:640px;
+	vertical-align:middle;
+}
+
+#categorySelect{
+	width:180px;
+}
+
+#description{
+	width:640px;
+}
+
+#addBtn{
+	background-color: #1E90FF;
+	color: white;
+	width:100px;	
+	cursor: pointer;
+	align:right;
+}
+
+#saveBtn{
+	background-color: #1E90FF;
+	color: white;
+	width:100px;	
+	cursor: pointer;
+	float:right;
+	margin-left: 20px;
+
+}
+#cancelBtn{
+	background-color: #696969;
+	color: white;
+	width:100px;	
+	cursor: pointer;
+	float:right;
+}
+
