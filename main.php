@@ -3,6 +3,7 @@
 
 <head>
 	<?php
+	require_once('dbconfig.php');
 	session_start();
 	if (!isset($_SESSION['user'])){
 		header("Location: index.php");
@@ -50,8 +51,15 @@
 			<a class="dropdown-item" href="generate-resource-report.php" method="GET">Generate Resource Report</a>
 			</div>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link js-scroll-trigger">User: <?php echo $_SESSION["user"];?></a>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				User: <?php $result = mysqli_query($con,"SELECT * FROM user WHERE username='".$_SESSION['user']."' ");
+							$row = mysqli_fetch_array($result);
+							$displayname = $row["displayname"];
+							echo $displayname;?></a>
+				<div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+				<?php include('user-info.php');?>
+				</div>
 			</li>
 			<li class="nav-item">
 			<a class="nav-link js-scroll-trigger" href="logout.php" method="GET">Logout</a>

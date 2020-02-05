@@ -3,6 +3,7 @@
 
 <head>
 	<?php
+	require_once('dbconfig.php');
 	session_start();
 	if (!isset($_SESSION['user'])){
 		header("Location: index.php");
@@ -19,6 +20,8 @@
   <link rel="icon" href="css/first-aid.png">
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
   <!-- Custom styles for this template -->
   <link href="css/scrolling-nav.css" rel="stylesheet">
@@ -59,8 +62,15 @@
 			<a class="dropdown-item" href="generate-resource-report.php" method="GET">Generate Resource Report</a>
 			</div>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link js-scroll-trigger">User: <?php echo $_SESSION["user"];?></a>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				User: <?php $result = mysqli_query($con,"SELECT * FROM user WHERE username='".$_SESSION['user']."' ");
+							$row = mysqli_fetch_array($result);
+							$displayname = $row["displayname"];
+							echo $displayname;?></a>
+				<div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+				<?php include('user-info.php');?>
+				</div>
 			</li>
 			<li class="nav-item">
 			<a class="nav-link js-scroll-trigger" href="logout.php" method="GET">Logout</a>
@@ -70,15 +80,20 @@
     </div>
   </nav>
 
-<form id="incidentForm">
-		<h1 id="incidentTitle">New Incident Information <span id="clear" style="float: right" class="glyphicon glyphicon-plus-sign"></span></h1>
+<form id="incidentForm" action="incident.php" method="POST">
+		<h1 id="incidentTitle">New Incident Information <a href="add-emergency-incident.php" style="float: right"><span id="clear" class="fa fa-plus"></span></a></h1>
 		<table id="incidentTable">
 			<tr>
 				<td id="column1">
 					<p id="textForm">Category<span style="color:red">*</span></p>
 				</td>
 				<td id="column2">
-					<select id="categorySelect" class="form-control"></select>
+					<select id="categorySelect" class="form-control" name="categorySelect" required>
+					<option></option>
+						<?php
+							include('incident-select.php');
+						?>
+					</select>
 				</td>
 			</tr>
 			<tr>
@@ -87,6 +102,9 @@
 				</td>
 				<td id="column2">
 				<p id="incidentID"></p>
+					<?php
+						include('display-incident-id.php');
+					?>
 				</td>
 			</tr>
 			<tr>
@@ -94,7 +112,7 @@
 					<p id="textForm">Date<span style="color:red">*</span><br/> <span id="subtextForm">(required)</span></p>
 				</td>
 				<td id="column2">
-					<input id="datepicker" width="270" autocomplete="off"/>
+					<input id="datepicker" name="datepicker" width="270" autocomplete="off" onkeydown="return false;" required/>
 					<script>
 						$('#datepicker').datepicker({
 							uiLibrary: 'bootstrap'
@@ -108,7 +126,7 @@
 				</td>
 				<td id="column2">
 					<div class="form-group">
-						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+						<textarea class="form-control" id="incidentDescription" name="incidentDescription" rows="3" required></textarea>
 					</div>
 				</td>
 			</tr>

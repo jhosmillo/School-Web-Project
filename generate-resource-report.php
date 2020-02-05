@@ -3,6 +3,7 @@
 
 <head>
 	<?php
+	require_once('dbconfig.php');
 	session_start();
 	if (!isset($_SESSION['user'])){
 		header("Location: index.php");
@@ -52,8 +53,15 @@
 			<a class="dropdown-item" href="generate-resource-report.php" method="GET">Generate Resource Report</a>
 			</div>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link js-scroll-trigger">User: <?php echo $_SESSION["user"];?></a>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				User: <?php $result = mysqli_query($con,"SELECT * FROM user WHERE username='".$_SESSION['user']."' ");
+							$row = mysqli_fetch_array($result);
+							$displayname = $row["displayname"];
+							echo $displayname;?></a>
+				<div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+				<?php include('user-info.php');?>
+				</div>
 			</li>
 			<li class="nav-item">
 			<a class="nav-link js-scroll-trigger" href="logout.php" method="GET">Logout</a>
@@ -79,59 +87,9 @@
 					</th>					
 				</tr>
 			</thead>
-				<tr>
-					<td>1</td>
-					<td>transportation</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>communications</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>engineering</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>search and rescue</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>5</td>
-					<td>education</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>6</td>
-					<td>energy</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>7</td>
-					<td>firefighting</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>8</td>
-					<td>human services</td>
-					<td></td>
-				</tr>
-			<thead class="thead-dark">
-				<tr>
-					<th>
-						
-					</th>
-					<th>
-						Total
-					</th>
-					<th>
-						
-					</th>					
-				</tr>
-			</thead>
+				<?php include('report.php'); ?>
+
+			
 			
 			
 			
